@@ -1,20 +1,17 @@
 import { NgModule } from '@angular/core';
+import { SharedModule } from '@shared/shared.module';
 import { NzTableModule } from 'ng-zorro-antd/table';
-import { FormsModule  } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 
 import { ProjectsRoutingModule } from './projects-routing.module';
 import { ProjectsComponent } from './projects.component';
 
 
-
 @NgModule({
   declarations: [ProjectsComponent],
   imports: [
-    ProjectsRoutingModule,
+    SharedModule,
     NzTableModule,
-    FormsModule,
-    CommonModule,
+    ProjectsRoutingModule,
   ],
   exports: [ProjectsComponent]
 })

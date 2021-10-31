@@ -1,0 +1,58 @@
+<div style="padding: 10px 20px;">
+    <h4>SVG Clock</h4>
+    <svg version="1.1" height="300" width="300">
+        <defs><!--定义下拉阴影的滤镜-->
+            <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur in="SourceAlpha" stdDeviation="1" result="blur"/>
+                <feOffset in="blur" dx="1" dy="1" result="shadow"/>
+                <feMerge>
+                    <feMergeNode in="SourceGraphic"/>
+                    <feMergeNode in="shadow"/>
+                </feMerge>
+            </filter>
+        </defs>
+        <circle cx="110" cy="110" r="103" stroke="#ccc" stroke-width="1.5" fill="#e5e5e5"></circle>
+        <circle cx="110" cy="110" r="100" stroke="#ccc" stroke-width="2" fill="#e5e5e5"></circle>
+    
+        <symbol id="tick">
+            <line x1="110" y1="20" x2="110" y2="10" stroke="#999"></line>
+        </symbol>
+    
+        <symbol id="tick-small">
+            <line x1="110" y1="12" x2="110" y2="10" stroke="#999"></line>
+        </symbol>
+    
+        <symbol id="tick-small-1234">
+              <use xlink:href="#tick-small" transform="rotate(6, 110, 110)"></use>
+              <use xlink:href="#tick-small" transform="rotate(12, 110, 110)"></use>
+              <use xlink:href="#tick-small" transform="rotate(18, 110, 110)"></use>
+              <use xlink:href="#tick-small" transform="rotate(24, 110, 110)"></use>
+        </symbol>
+    
+        <symbol id="tick012">
+              <use xlink:href="#tick" transform="rotate(0, 110, 110)"></use>
+              <use xlink:href="#tick-small-1234" transform="rotate(0, 110, 110)"></use>
+              <use xlink:href="#tick" transform="rotate(30, 110, 110)"></use>
+              <use xlink:href="#tick-small-1234" transform="rotate(30, 110, 110)"></use>
+              <use xlink:href="#tick" transform="rotate(60, 110, 110)"></use>
+              <use xlink:href="#tick-small-1234" transform="rotate(60, 110, 110)"></use>
+        </symbol>
+        
+        <use xlink:href="#tick012" transform="rotate(0, 110, 110)"></use>
+        <use xlink:href="#tick012" transform="rotate(90, 110, 110)"></use>
+        <use xlink:href="#tick012" transform="rotate(180, 110, 110)"></use>
+        <use xlink:href="#tick012" transform="rotate(270, 110, 110)"></use>
+        <g id="numbers"><!--标记重要的几个刻度-->
+            <text x="100" y="35">12</text>
+            <text x="190" y="115">3</text>
+            <text x="105" y="195">6</text>
+            <text x="23" y="115">9</text>
+        </g>
+        <g id="hands"> <!--给指针添加阴影-->
+            <line id="hourhand" stroke="black" stroke-width="2" x1="110" y1="110" x2="110" y2="60"/>
+            <line id="minhand" stroke="blue" stroke-width="1.5" x1="110" y1="110" x2="110" y2="50"/>
+            <line id="secondhand" stroke="gray" stroke-width="1" x1="110" y1="110" x2="110" y2="30"/>
+        </g>
+    </svg>
+</div>
+<div id='d3Svg'></div>

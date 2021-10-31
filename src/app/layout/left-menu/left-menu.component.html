@@ -1,0 +1,35 @@
+<nz-layout class="app-layout">
+  <nz-sider class="menu-sidebar" nzCollapsible nzWidth="256px" nzBreakpoint="md" [(nzCollapsed)]="isCollapsed"
+    [nzTrigger]="null">
+    <div class="sidebar-logo">
+      <a href="https://ng.ant.design/" target="_blank">
+        <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
+        <h1>{{'angular.study' | translate }}</h1>
+      </a>
+    </div>
+    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+      <li nz-menu-item nzMatchRouter routerLink="/project">
+        <i nz-icon nzType="project"></i>
+        <span>{{'project.list' | translate}}</span>
+      </li>
+      <li nz-submenu nzOpen nzTitle="{{'web.Knowledge' | translate}}" nzIcon="dashboard">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/console/draw">SVG & Canvas</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nz-sider>
+  <span class="header-trigger" (click)="isCollapsed = !isCollapsed"
+    [ngStyle]="{'left': isCollapsed ? '60px' : '240px'}">
+    <i class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></i>
+  </span>
+  <nz-layout>
+    <nz-content>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>
